@@ -31,7 +31,16 @@ namespace ProjektiHaldus.Views
 
         private void BtnAddProject_OnClick(object sender, RoutedEventArgs e)
         {
-            _vm.SaveProject();
+            bool result = _vm.SaveProject();
+            if (result)
+            {
+                MessageBox.Show("Projekt salvestatud");
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Selle nimega projekt on olemas");
+            }
         }
     }
 }

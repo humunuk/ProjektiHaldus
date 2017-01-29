@@ -33,7 +33,7 @@ namespace ProjektiHaldus.Services
             }
         }
 
-        public static void SaveNewProject(project project)
+        public static bool SaveNewProject(project project)
         {
             using (Domain.ProjectManagementEntities db = new ProjectManagementEntities())
             {
@@ -43,10 +43,25 @@ namespace ProjektiHaldus.Services
                 {
                     db.projects.Add(project);
                     db.SaveChanges();
+                    
+                    return true;
                 }
                 else
                 {
-                    MessageBox.Show("Sellise nimega projekt on juba olemas");
+                    return false;
+                }
+            }
+        }
+
+        public static void DeleteProject(int projectId)
+        {
+            using (Domain.ProjectManagementEntities db = new ProjectManagementEntities())
+            {
+                project project = db.projects.First(x => x.project_id == projectId);
+                if (project != null)
+                {
+                    db.projects.Remove(project);
+                    db.SaveChanges();
                 }
             }
         }

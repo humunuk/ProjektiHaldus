@@ -26,7 +26,7 @@ namespace ProjektiHaldus.ViewModels
         internal void DeleteProject(ProjectBo projectBo)
         {
             Projects.Remove(projectBo);
-            //ProjectService.DeleteProject(ProjectId);
+            ProjectService.DeleteProject(projectBo.ProjectId);
         }
     }
 }

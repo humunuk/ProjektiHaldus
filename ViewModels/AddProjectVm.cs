@@ -24,9 +24,9 @@ namespace ProjektiHaldus.ViewModels
             set { project = value; }
         }
 
-        public void SaveProject()
+        public bool SaveProject()
         {
-            ProjectService.SaveNewProject(Project.ParseDomain());
+            return ProjectService.SaveNewProject(Project.ParseDomain());
         }
     }
 }

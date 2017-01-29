@@ -33,5 +33,10 @@ namespace ProjektiHaldus.Views
         {
             throw new NotImplementedException();
         }
+
+        private void BtnAddSaveChanges_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
