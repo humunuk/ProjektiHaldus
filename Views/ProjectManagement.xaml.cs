@@ -23,5 +23,11 @@ namespace ProjektiHaldus.Views
         {
             InitializeComponent();
         }
+
+        private void BtnAddProjectTask_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        
     }
 }

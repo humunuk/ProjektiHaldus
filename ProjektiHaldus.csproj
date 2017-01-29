@@ -181,6 +181,7 @@
     </Content>
     <Content Include="Wireframes\dbo.projects.sql" />
     <Content Include="Wireframes\dbo.project_tasks.sql" />
+    <Resource Include="Wireframes\Vaated.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

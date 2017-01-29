@@ -7,6 +7,25 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="768" Width="768">
     <Grid>
-        
+        <Button x:Name="BtnAddProject" Content="Lisa projekt" HorizontalAlignment="Left" Margin="30,25,0,0" VerticalAlignment="Top" Width="132" Height="33"/>
+        <TextBox x:Name="TxtBoxSearchProject" HorizontalAlignment="Left" Height="33" Margin="207,25,0,0" TextWrapping="Wrap" Text="Otsi projekti nime järgi" VerticalAlignment="Top" Width="482"/>
+        <ListView x:Name="listViewProjects" HorizontalAlignment="Left" Height="308" Margin="30,124,0,0" VerticalAlignment="Top" Width="659">
+            <ListView.View>
+                <GridView AllowsColumnReorder="false">
+                    <GridViewColumn Header="Nimi" Width="150"/>
+                    <GridViewColumn Header="Kirjeldus" Width="250"/>
+                    <GridViewColumn Header="Vastutav" Width="100"/>
+                    <GridViewColumn Header="Kulunud aeg" Width="100"/>
+                    <GridViewColumn Width="30">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="BtnDelete" Click="BtnDelete_OnClick">X</Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </Window>

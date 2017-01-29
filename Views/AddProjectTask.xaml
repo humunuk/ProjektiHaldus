@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektiHaldus.Views"
         mc:Ignorable="d"
-        Title="AddProjectTask" Height="300" Width="300">
+        Title="AddProjectTask" Height="300" Width="388.235">
     <Grid>
-        
+        <TextBox x:Name="TxtBoxName" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Nimi" VerticalAlignment="Top" Width="238"/>
+        <TextBox x:Name="TxtBoxDesc" HorizontalAlignment="Left" Height="23" Margin="10,46,0,0" TextWrapping="Wrap" Text="Kirjeldus" VerticalAlignment="Top" Width="336"/>
+        <TextBox x:Name="TxtBoxWorker" HorizontalAlignment="Left" Height="23" Margin="10,82,0,0" TextWrapping="Wrap" Text="Tegija" VerticalAlignment="Top" Width="238"/>
+        <TextBox x:Name="TxtBoxStart" HorizontalAlignment="Left" Height="23" Margin="10,128,0,0" TextWrapping="Wrap" Text="Algus pp.kk.aaaa hh:mm" VerticalAlignment="Top" Width="139"/>
+        <TextBox x:Name="TxtBoxEnd" Height="23" Margin="186,128,55,0" TextWrapping="Wrap" Text="Lõpp pp.kk.aaaa hh:mm" VerticalAlignment="Top"/>
+        <Button x:Name="BtnAddProject" Click="BtnAddProject_OnClick" Content="Lisa" HorizontalAlignment="Left" Margin="247,204,0,0" VerticalAlignment="Top" Width="99"/>
     </Grid>
 </Window>

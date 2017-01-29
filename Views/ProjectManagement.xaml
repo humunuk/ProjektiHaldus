@@ -5,8 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektiHaldus.Views"
         mc:Ignorable="d"
-        Title="ProjectManagement" Height="300" Width="300">
+        Title="ProjectManagement" Height="768" Width="768">
     <Grid>
-        
+        <TextBox x:Name="TxtBoxName" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Nimi" VerticalAlignment="Top" Width="238"/>
+        <TextBox x:Name="TxtBoxDesc" HorizontalAlignment="Left" Height="23" Margin="10,46,0,0" TextWrapping="Wrap" Text="Kirjeldus" VerticalAlignment="Top" Width="336"/>
+        <TextBox x:Name="TxtBoxManager" HorizontalAlignment="Left" Height="23" Margin="10,82,0,0" TextWrapping="Wrap" Text="Vastutav isik" VerticalAlignment="Top" Width="238"/>
+        <Button x:Name="BtnAddProjectTask" Click="BtnAddProjectTask_OnClick" Content="Lisa tegevus" HorizontalAlignment="Left" Margin="549,122,0,0" VerticalAlignment="Top" Width="99"/>
+        <ListView x:Name="ListViewProjectTasks" HorizontalAlignment="Left" Height="409" Margin="10,173,0,0" VerticalAlignment="Top" Width="740">
+            <ListView.View>
+                <GridView AllowsColumnReorder="false">
+                    <GridViewColumn Header="Nimi" Width="100"/>
+                    <GridViewColumn Header="Kirjeldus" Width="250"/>
+                    <GridViewColumn Header="Tegija" Width="100"/>
+                    <GridViewColumn Header="Algus" Width="100"/>
+                    <GridViewColumn Header="Lõpp" Width="100"/>
+                    <GridViewColumn Header="Aeg" Width="50"/>
+                    <GridViewColumn Width="30">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="BtnDelete" Click="BtnDelete_OnClick">X</Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </Window>
