@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="project_tasks">
+    <Key>
+      <PropertyRef Name="project_task_id" />
+    </Key>
+    <Property Name="project_task_id" Type="Int32" Nullable="false" />
+    <Property Name="project_id" Type="Int32" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="worker_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="start_date_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="end_date_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="time_spent" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="project" Relationship="Self.FK_project_tasks_projects" FromRole="project_tasks" ToRole="projects" />
+  </EntityType>
+  <EntityType Name="project">
+    <Key>
+      <PropertyRef Name="project_id" />
+    </Key>
+    <Property Name="project_id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="manager_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="project_tasks" Relationship="Self.FK_project_tasks_projects" FromRole="projects" ToRole="project_tasks" />
+  </EntityType>
+  <Association Name="FK_project_tasks_projects">
+    <End Role="projects" Type="Self.project" Multiplicity="1" />
+    <End Role="project_tasks" Type="Self.project_tasks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="projects">
+        <PropertyRef Name="project_id" />
+      </Principal>
+      <Dependent Role="project_tasks">
+        <PropertyRef Name="project_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjectManagementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="project_tasks" EntityType="Self.project_tasks" />
+    <EntitySet Name="projects" EntityType="Self.project" />
+    <AssociationSet Name="FK_project_tasks_projects" Association="Self.FK_project_tasks_projects">
+      <End Role="projects" EntitySet="projects" />
+      <End Role="project_tasks" EntitySet="project_tasks" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
