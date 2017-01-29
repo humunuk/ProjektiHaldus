@@ -28,6 +28,10 @@ namespace ProjektiHaldus.Views
         {
             throw new NotImplementedException();
         }
-        
+
+        private void BtnDelete_OnClick(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

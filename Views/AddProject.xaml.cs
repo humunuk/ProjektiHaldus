@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ProjektiHaldus.ViewModels;
 
 namespace ProjektiHaldus.Views
 {
@@ -19,14 +20,18 @@ namespace ProjektiHaldus.Views
     /// </summary>
     public partial class AddProject : Window
     {
+        private AddProjectVm _vm;
         public AddProject()
         {
             InitializeComponent();
+            _vm = new AddProjectVm();
+            this.DataContext = _vm;
+
         }
 
         private void BtnAddProject_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            _vm.SaveProject();
         }
     }
 }
