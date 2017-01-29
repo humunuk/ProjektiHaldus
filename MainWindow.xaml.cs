@@ -54,9 +54,7 @@ namespace ProjektiHaldus
 
         private void BtnAddProject_OnClick(object sender, RoutedEventArgs e)
         {
-            AddProject addProject = new AddProject();
-            addProject.Show();
-            _vm.Projects.Add(addProject.ViewModel.Project);
+            _vm.LoadAddProjectWindow();
         }
 
         private void TxtBoxSearchProject_KeyUp(object sender, KeyEventArgs e)
@@ -68,6 +66,23 @@ namespace ProjektiHaldus
             else
             {
                 _vm.LoadData();
+            }
+        }
+
+        private void ListViewProjects_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var item = sender as ListView;
+            if (item != null)
+            {
+                ProjectBo projectBo = item.SelectedItem as ProjectBo;
+
+                if (projectBo != null)
+                {
+                    ProjectManagement managementView = new ProjectManagement();
+                    managementView.Vm.LoadData(projectBo);
+                    managementView.Show();
+                }
+
             }
         }
     }

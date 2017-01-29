@@ -9,7 +9,7 @@
     <Grid>
         <Button x:Name="BtnAddProject" Click="BtnAddProject_OnClick" Content="Lisa projekt" HorizontalAlignment="Left" Margin="30,25,0,0" VerticalAlignment="Top" Width="132" Height="33"/>
         <TextBox x:Name="TxtBoxSearchProject" HorizontalAlignment="Left" Height="33" Margin="207,25,0,0" TextWrapping="Wrap" Text="Otsi projekti nime järgi" VerticalAlignment="Top" Width="482" KeyUp="TxtBoxSearchProject_KeyUp"/>
-        <ListView x:Name="ListViewProjects" ItemsSource="{Binding Projects}" HorizontalAlignment="Left" Height="308" Margin="30,124,0,0" VerticalAlignment="Top" Width="659">
+        <ListView x:Name="ListViewProjects" MouseDoubleClick="ListViewProjects_OnMouseDoubleClick" ItemsSource="{Binding Projects}" HorizontalAlignment="Left" Height="308" Margin="30,124,0,0" VerticalAlignment="Top" Width="659">
             <ListView.View>
                 <GridView AllowsColumnReorder="false">
                     <GridViewColumn Header="Nimi" Width="150" DisplayMemberBinding="{Binding Path=Name}"/>

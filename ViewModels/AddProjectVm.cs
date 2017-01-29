@@ -28,7 +28,7 @@ namespace ProjektiHaldus.ViewModels
             bool result = ProjectService.SaveNewProject(Project.ParseDomain());
             if (result)
             {
-                NotifyPropertyChanged("Project");
+                
             }
             return result;
         }

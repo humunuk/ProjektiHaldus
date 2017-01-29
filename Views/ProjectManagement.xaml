@@ -5,26 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjektiHaldus.Views"
         mc:Ignorable="d"
-        Title="ProjectManagement" Height="768" Width="768">
+        Title="ProjectManagement" Height="768" Width="967">
     <Grid>
-        <TextBox x:Name="TxtBoxName" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="Nimi" VerticalAlignment="Top" Width="238"/>
-        <TextBox x:Name="TxtBoxDesc" HorizontalAlignment="Left" Height="23" Margin="10,46,0,0" TextWrapping="Wrap" Text="Kirjeldus" VerticalAlignment="Top" Width="336"/>
-        <TextBox x:Name="TxtBoxManager" HorizontalAlignment="Left" Height="23" Margin="10,82,0,0" TextWrapping="Wrap" Text="Vastutav isik" VerticalAlignment="Top" Width="238"/>
+        <TextBox x:Name="TxtBoxName" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding ProjectBo.Name, TargetNullValue=Nimi}" VerticalAlignment="Top" Width="238"/>
+        <TextBox x:Name="TxtBoxDesc" HorizontalAlignment="Left" Height="23" Margin="10,46,0,0" TextWrapping="Wrap" Text="{Binding ProjectBo.Description, TargetNullValue=Kirjeldus}" VerticalAlignment="Top" Width="336"/>
+        <TextBox x:Name="TxtBoxManager" HorizontalAlignment="Left" Height="23" Margin="10,82,0,0" TextWrapping="Wrap" Text="{Binding ProjectBo.ManagerName, TargetNullValue=Vastutav isik}" VerticalAlignment="Top" Width="238"/>
         <Button x:Name="BtnAddSaveChanges" Click="BtnAddSaveChanges_OnClick" Content="Salvesta muudatused" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Width="160"/>
         <Button x:Name="BtnAddProjectTask" Click="BtnAddProjectTask_OnClick" Content="Lisa tegevus" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="99"/>
-        <ListView x:Name="ListViewProjectTasks" HorizontalAlignment="Left" Height="409" Margin="10,173,0,0" VerticalAlignment="Top" Width="740">
+        <ListView x:Name="ListViewProjectTasks" ItemsSource="{Binding Tasks}" HorizontalAlignment="Left" Height="409" Margin="10,173,0,0" VerticalAlignment="Top" Width="939">
             <ListView.View>
                 <GridView AllowsColumnReorder="false">
-                    <GridViewColumn Header="Nimi" Width="100"/>
-                    <GridViewColumn Header="Kirjeldus" Width="250"/>
-                    <GridViewColumn Header="Tegija" Width="100"/>
-                    <GridViewColumn Header="Algus" Width="100"/>
-                    <GridViewColumn Header="Lõpp" Width="100"/>
-                    <GridViewColumn Header="Aeg" Width="50"/>
+                    <GridViewColumn Header="Nimi" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox x:Name="TxtBoxName" Width="100" Text="{Binding Path=Name}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Kirjeldus" Width="250">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox x:Name="TxtBoxDesc" Width="250" Text="{Binding Path=Description}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Tegija" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox x:Name="TxtBoxWorkerName" Width="100" Text="{Binding Path=WorkerName}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Algus" Width="190">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox x:Name="TxtBoxStartDateTime" Width="190" Text="{Binding Path=StartDateTime}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Lõpp" Width="190">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox x:Name="TxtBoxEndDateTime" Width="190" Text="{Binding Path=EndDateTime}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Aeg" Width="70" DisplayMemberBinding="{Binding Path=TimeSpent}">
+                    </GridViewColumn>
                     <GridViewColumn Width="30">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="BtnDelete" Click="BtnDelete_OnClick">X</Button>
+                                <Button Name="BtnDelete" Click="BtnDelete_OnClick" CommandParameter="{Binding}">X</Button>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

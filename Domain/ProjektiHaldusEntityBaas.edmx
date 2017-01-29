@@ -11,6 +11,7 @@
           </Key>
           <Property Name="project_task_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="project_id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar(max)" Nullable="false" />
           <Property Name="description" Type="varchar(max)" Nullable="false" />
           <Property Name="worker_name" Type="varchar(max)" Nullable="false" />
           <Property Name="start_date_time" Type="datetime" Nullable="false" />
@@ -63,6 +64,7 @@
           <Property Name="end_date_time" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="time_spent" Type="Time" Nullable="false" Precision="7" />
           <NavigationProperty Name="project" Relationship="Self.FK_project_tasks_projects" FromRole="project_tasks" ToRole="projects" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="project">
           <Key>
@@ -104,6 +106,7 @@
           <EntitySetMapping Name="project_tasks">
             <EntityTypeMapping TypeName="ProjectManagementModel.project_tasks">
               <MappingFragment StoreEntitySet="project_tasks">
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="project_task_id" ColumnName="project_task_id" />
                 <ScalarProperty Name="project_id" ColumnName="project_id" />
                 <ScalarProperty Name="description" ColumnName="description" />

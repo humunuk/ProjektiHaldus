@@ -21,6 +21,7 @@ namespace ProjektiHaldus.Domain
         public System.DateTime start_date_time { get; set; }
         public System.DateTime end_date_time { get; set; }
         public System.TimeSpan time_spent { get; set; }
+        public string name { get; set; }
     
         public virtual project project { get; set; }
     }
