@@ -8,8 +8,7 @@ using ProjektiHaldus.Services;
 
 namespace ProjektiHaldus.ViewModels
 {
-    
-    class AddProjectVm
+    public class AddProjectVm : INotifyVM
     {
         private ProjectBo project;
 
@@ -26,7 +25,12 @@ namespace ProjektiHaldus.ViewModels
 
         public bool SaveProject()
         {
-            return ProjectService.SaveNewProject(Project.ParseDomain());
+            bool result = ProjectService.SaveNewProject(Project.ParseDomain());
+            if (result)
+            {
+                NotifyPropertyChanged("Project");
+            }
+            return result;
         }
     }
 }

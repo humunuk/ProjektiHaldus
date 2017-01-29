@@ -25,13 +25,18 @@ namespace ProjektiHaldus.Views
         {
             InitializeComponent();
             _vm = new AddProjectVm();
-            this.DataContext = _vm;
+            this.DataContext = ViewModel;
 
+        }
+
+        public AddProjectVm ViewModel
+        {
+            get { return _vm; }
         }
 
         private void BtnAddProject_OnClick(object sender, RoutedEventArgs e)
         {
-            bool result = _vm.SaveProject();
+            bool result = ViewModel.SaveProject();
             if (result)
             {
                 MessageBox.Show("Projekt salvestatud");

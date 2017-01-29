@@ -75,6 +75,7 @@
     <Compile Include="Services\ProjectService.cs" />
     <Compile Include="ViewModels\AddProjectTaskVm.cs" />
     <Compile Include="ViewModels\AddProjectVm.cs" />
+    <Compile Include="ViewModels\InotifyVm.cs" />
     <Compile Include="ViewModels\MainWindowVM.cs" />
     <Compile Include="ViewModels\ProjectManagementVm.cs" />
     <Compile Include="Views\AddProject.xaml.cs">

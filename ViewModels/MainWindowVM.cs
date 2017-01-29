@@ -10,7 +10,7 @@ using ProjektiHaldus.Services;
 
 namespace ProjektiHaldus.ViewModels
 {
-    class MainWindowVm
+    class MainWindowVm : INotifyVM
     {
         public MainWindowVm()
         {
@@ -27,6 +27,12 @@ namespace ProjektiHaldus.ViewModels
         {
             Projects.Remove(projectBo);
             ProjectService.DeleteProject(projectBo.ProjectId);
+        }
+
+        public void SearchProjects(string searchString)
+        {
+            Projects = ProjectService.SearchProjects(searchString);
+            NotifyPropertyChanged("Projects");
         }
     }
 }

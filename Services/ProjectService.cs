@@ -65,5 +65,26 @@ namespace ProjektiHaldus.Services
                 }
             }
         }
+
+        public static ObservableCollection<ProjectBo> SearchProjects(string searchString)
+        {
+            ObservableCollection<ProjectBo> projects = new ObservableCollection<ProjectBo>();
+            var projectsList = FindProjects(searchString);
+
+            foreach (var projectBo in projectsList)
+            {
+                projects.Add(projectBo);
+            }
+
+            return projects;
+        }
+
+        private static List<ProjectBo> FindProjects(string searchString)
+        {
+            using (Domain.ProjectManagementEntities db = new ProjectManagementEntities())
+            {
+                return db.projects.Include("project_tasks").Where(x => x.name.Contains(searchString)).ToList().Select(x => new ProjectBo(x)).ToList();
+            }
+        }
     }
 }

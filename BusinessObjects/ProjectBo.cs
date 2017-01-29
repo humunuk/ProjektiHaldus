@@ -7,7 +7,7 @@ using ProjektiHaldus.Domain;
 
 namespace ProjektiHaldus.BusinessObjects
 {
-    class ProjectBo
+    public class ProjectBo
     {
         private readonly TimeSpan _totalTimeSpent;
         public string Name { get; set; }

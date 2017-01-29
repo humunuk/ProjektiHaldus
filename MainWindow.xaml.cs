@@ -18,17 +18,6 @@ using ProjektiHaldus.Views;
 
 namespace ProjektiHaldus
 {
-    public class WindowHelpers
-    {
-        public static void SelectAll(object sender, RoutedEventArgs e)
-        {
-            TextBox tb = sender as TextBox;
-            if (tb != null)
-            {
-                tb.SelectAll();
-            }
-        }
-    }
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -67,6 +56,19 @@ namespace ProjektiHaldus
         {
             AddProject addProject = new AddProject();
             addProject.Show();
+            _vm.Projects.Add(addProject.ViewModel.Project);
+        }
+
+        private void TxtBoxSearchProject_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (TxtBoxSearchProject.Text != "")
+            {
+                _vm.SearchProjects(TxtBoxSearchProject.Text);
+            }
+            else
+            {
+                _vm.LoadData();
+            }
         }
     }
 }
